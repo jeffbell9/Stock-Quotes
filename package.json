@@ -4,6 +4,8 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080",
+    "prod": "NODE_ENV=production node server.js",
+    "postinstall": "webpack -p --config ./webpack.prod.config.js --progress",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
@@ -18,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~4.2.0",
     "@angular/router": "~4.2.0",
     "core-js": "^2.4.1",
+    "express": "^4.15.3",
     "rxjs": "5.0.1",
     "zone.js": "^0.8.4"
   },
