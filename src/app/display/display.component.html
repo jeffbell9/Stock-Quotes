@@ -1,0 +1,36 @@
+<table class="table">
+        <tbody>
+            <tr>
+                <td class="company symbol">Symbol</td>
+                <td class="price symbol">Last</td>
+            </tr>
+            <tr *ngFor="let quote of displayService.quotes">
+                <td class="company">{{quote.ticker}}</td>
+                <td class="price">{{quote.last}}</td>
+            </tr>
+            <tr *ngIf="quotes.length <= 5">
+                <td class="company"></td>
+                <td class="price"></td>
+            </tr>
+            <tr *ngIf="quotes.length <= 4">
+                <td class="company"></td>
+                <td class="price"></td>
+            </tr>
+            <tr *ngIf="quotes.length <= 3">
+                <td class="company"></td>
+                <td class="price"></td>
+            </tr>
+            <tr *ngIf="quotes.length <= 2">
+                <td class="company"></td>
+                <td class="price"></td>
+            </tr>
+            <tr *ngIf="quotes.length <= 1">
+                <td class="company"></td>
+                <td class="price"></td>
+            </tr>
+            <tr *ngIf="quotes.length === 0">
+                <td class="company"></td>
+                <td class="price"></td>
+            </tr>
+        </tbody>
+</table>

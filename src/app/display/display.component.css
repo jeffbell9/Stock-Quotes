@@ -1,0 +1,34 @@
+.company {
+	height: 40px;
+	width: 65px;
+	text-align: right;
+	color: gold;
+	background-color: #404040;
+	text-align: center;
+}
+
+.price {
+	height: 40px;
+	width: 70px;
+	text-align: left;
+	color: gold;
+	background-color: #494949;
+	text-align: center;
+}
+
+.symbol {
+ 	color: gray;
+ }
+
+td {
+    border: 2px solid black
+}
+
+table {
+    border-collapse: collapse;
+    width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	margin-bottom: 0;
+}
