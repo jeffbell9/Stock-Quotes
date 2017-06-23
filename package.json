@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080",
     "test": "karma start",
-    "build": "NODE_ENV=production webpack -p --config ./webpack.production.config.js"
+    "build": "Node_Env=production webpack -p"
   },
   "engines": {
     "node": "6.10.2"
