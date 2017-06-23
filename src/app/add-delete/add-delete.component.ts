@@ -17,7 +17,6 @@ export class AddDeleteComponent {
 
     addTicker() { 
         this.displayService.displayInfo(this.ticker);
-        //this.displayService.tickers.push(this.ticker.toUpperCase());
         this.ticker = null;
 
     }
