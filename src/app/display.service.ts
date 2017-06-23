@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Jsonp, Response } from '@angular/http';
 
 export interface Quotes {
     ticker: string,
@@ -14,12 +15,12 @@ export class DisplayService implements Quotes {
     tickers: string[] = ["SPY", "AAPL"];
     quotes: Array<Quotes> = [];
 
-    constructor(private http: Http) {
+    constructor(private jsonp: Jsonp) {
 
     }
 
     getTickerInfo(ticker: string) {
-            return this.http.get('https://www.google.com/finance/info?q=NSE:' + ticker)
+            return this.jsonp.request('https://www.google.com/finance/info?q=NSE:' + ticker + '&callback=JSONP_CALLBACK')
                 .toPromise()
                 .then(response => JSON.parse(response.text().replace("//", "")));
     }
