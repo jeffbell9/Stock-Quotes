@@ -8,6 +8,9 @@
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
+  "engines": {
+    "node": "6.10.2"
+  },
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~4.2.0",
