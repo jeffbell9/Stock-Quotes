@@ -4,7 +4,6 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080",
-    "prod": "NODE_ENV=production node server.js",
     "postinstall": "webpack -p --config ./webpack.prod.config.js --progress",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
