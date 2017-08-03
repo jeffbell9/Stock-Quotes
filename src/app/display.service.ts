@@ -22,7 +22,8 @@ export class DisplayService implements Quotes {
     getTickerInfo(ticker: string) {
             return this.jsonp.request('https://www.google.com/finance/info?q=NSE:' + ticker + '&callback=JSONP_CALLBACK')
                 .toPromise()
-                .then(response => JSON.parse(response.text().replace("//", "")));
+                .then(response => JSON.parse(response.text().replace("//", "")))
+                .catch(() => alert("Invalid ticker symbol"));
     }
     
     displayInfo(ticker: string) {
