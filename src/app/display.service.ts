@@ -22,12 +22,12 @@ export class DisplayService implements Quotes {
     getTickerInfo(ticker: string) {
             return this.jsonp.request('https://www.google.com/finance/info?q=NSE:' + ticker + '&callback=JSONP_CALLBACK')
                 .toPromise()
-                .then(response => JSON.parse(response.text().replace("//", "")))
-                .catch(() => alert("Invalid ticker symbol"));
+                .then(response => JSON.parse(response.text().replace("//", "")));
     }
     
     displayInfo(ticker: string) {
                 this.getTickerInfo(ticker)
-                .then(data => this.quotes.push({ticker: data[0].t, last: data[0].l}));
+                .then(data => this.quotes.push({ticker: data[0].t, last: data[0].l}))
+                .catch(() => alert("Invalid ticker symbol"));
      } 
 } 
