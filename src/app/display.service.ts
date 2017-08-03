@@ -33,10 +33,7 @@ export class DisplayService implements Quotes {
     
     displayInfo(ticker: string) {
                 this.getTickerInfo(ticker)
-                .then(data => {
-                    if(data !== undefined) {
-                        this.quotes.push({ticker: data[0].t, last: data[0].l});
-                    }
-                });
+                .then(data => this.quotes.push({ticker: data[0].t, last: data[0].l}))
+                .catch(() => console.error("Invalid ticker symbol"));
      } 
 } 
