@@ -19,6 +19,12 @@ export class DisplayService implements Quotes {
 
     }
 
+    private handleError(error: any) {
+        const errMsg = "Invalid ticker symbol";
+        console.error(errMsg);
+        alert(errMsg);
+    }
+
     getTickerInfo(ticker: string) {
             return this.jsonp.request('https://www.google.com/finance/info?q=NSE:' + ticker + '&callback=JSONP_CALLBACK')
                 .toPromise()
@@ -28,6 +34,6 @@ export class DisplayService implements Quotes {
     displayInfo(ticker: string) {
                 this.getTickerInfo(ticker)
                 .then(data => this.quotes.push({ticker: data[0].t, last: data[0].l}))
-                .catch(() => alert("Invalid ticker symbol"));
+                .catch(this.handleError);
      } 
 } 
