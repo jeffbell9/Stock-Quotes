@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Jsonp, Response } from '@angular/http';
 
 export interface Quotes {
     ticker: string,
@@ -15,7 +14,7 @@ export class DisplayService implements Quotes {
     tickers: string[] = ["SPY", "AAPL"];
     quotes: Array<Quotes> = [];
 
-    constructor(private jsonp: Jsonp) {
+    constructor(private http: Http) {
 
     }
 
@@ -25,15 +24,17 @@ export class DisplayService implements Quotes {
     }
 
     getTickerInfo(ticker: string) {
-            return this.jsonp.request('https://www.google.com/finance/info?q=NSE:' + ticker + '&callback=JSONP_CALLBACK')
+            return this.http.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + ticker + '&interval=1min&apikey=F135A0A4W6SJ8ZEY')
                 .toPromise()
-                .then(response => JSON.parse(response.text().replace("//", "")))
-                .catch((res: Response) => this.handleError(res));
+                .then(response => response.json());
     }
     
     displayInfo(ticker: string) {
                 this.getTickerInfo(ticker)
-                .then(data => this.quotes.push({ticker: data[0].t, last: data[0].l}))
-                .catch(() => console.error("Invalid ticker symbol"));
+                .then(data => {
+                    const latestQuote = Object.keys(data[ "Time Series (1min)" ])[0];
+                    this.quotes.push({ticker: ticker.toUpperCase(), last: parseFloat(data[ "Time Series (1min)" ][latestQuote]['4. close']).toFixed(2)});
+                })
+                .catch(err => this.handleError(err));
      } 
 } 
