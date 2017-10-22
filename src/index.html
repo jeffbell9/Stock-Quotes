@@ -5,8 +5,15 @@
     <title>Stock Quotes</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+      window.onload = function() {document.getElementById("hideAll").style.display = "none"};
+    </script>
   </head>
   <body>
-    <app-root>Loading...</app-root>
+    <div id="hideAll">Loading...</div>
+    <script type="text/javascript">
+      document.getElementById("hideAll").style.display = "block";
+    </script> 
+    <app-root></app-root>
   </body>
 </html>
